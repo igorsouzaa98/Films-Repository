@@ -5,10 +5,14 @@ export const getAll = ()=>{
     return repository.getAll()
 }
 
-export const getById = (id: number)=>{
-    return repository.getById(id)
+export const getById = async (id: number)=>{
+    return await repository.getById(id)
 }
 
 export const create = (payload:FilmInput)=>{
     return  repository.create(payload)
+}
+
+export  const updateById = (id: number, payload: FilmInput) =>{
+    return repository.updateById(id, payload)
 }

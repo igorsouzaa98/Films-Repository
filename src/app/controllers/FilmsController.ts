@@ -9,16 +9,20 @@ router.get('/', (req: Request, res:Response)=>{
     })
 })
 
-router.get('/:id',(req:Request, res:Response)=>{
-    service.getById(parseInt(req.params.id)).then((film)=>{
-        res.send(film)
-    })
+router.get('/:id', async (req:Request, res:Response)=>{
+        res.send(await service.getById(parseInt(req.params.id)))
 } )
 
 router.post('/', (req:Request, res:Response)=>{
     service.create(req.body).then((film)=>{
-        res.send(film)
+        res.status(201).send(film)
     })
 })
+
+router.put('/:id',(req:Request, res:Response)=>{
+    service.updateById(parseInt(req.params.id), req.body).then((film)=>{
+        res.send(film)
+    })
+} )
 
 export default router

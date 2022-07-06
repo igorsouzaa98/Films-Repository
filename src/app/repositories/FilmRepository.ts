@@ -1,4 +1,4 @@
-import model from '../models/FilmModel'
+import model, {FilmInput} from '../models/FilmModel'
 
 export const getAll = ()=>{
     return model.findAll()
@@ -6,4 +6,8 @@ export const getAll = ()=>{
 
 export const getById = (id: number)=>{
     return model.findByPk(id)
+}
+
+export const create = (payload:FilmInput)=>{
+    return model.create(payload)
 }

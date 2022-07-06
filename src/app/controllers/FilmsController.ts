@@ -15,4 +15,10 @@ router.get('/:id',(req:Request, res:Response)=>{
     })
 } )
 
+router.post('/', (req:Request, res:Response)=>{
+    service.create(req.body).then((film)=>{
+        res.send(film)
+    })
+})
+
 export default router

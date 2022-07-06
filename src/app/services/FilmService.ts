@@ -1,18 +1,22 @@
 import * as repository from '../repositories/FilmRepository'
-import {FilmInput} from "../models/FilmModel"
+import {FilmInput, FilmOutput} from "../models/FilmModel"
 
-export const getAll = ()=>{
-    return repository.getAll()
+export const getAll =async ():Promise<FilmOutput[]> =>{
+    return await repository.getAll()
 }
 
-export const getById = async (id: number)=>{
+export const getById = async (id: number): Promise<FilmOutput> =>{
     return await repository.getById(id)
 }
 
-export const create = (payload:FilmInput)=>{
-    return  repository.create(payload)
+export const create = async (payload:FilmInput): Promise<FilmOutput> =>{
+    return await repository.create(payload)
 }
 
-export  const updateById = (id: number, payload: FilmInput) =>{
-    return repository.updateById(id, payload)
+export  const updateById = async (id: number, payload: FilmInput): Promise<FilmOutput> =>{
+    return await repository.updateById(id, payload)
+}
+
+export const deleteById = async (id:number): Promise <void> =>{
+    return  await repository.deleteById(id)
 }

@@ -9,4 +9,10 @@ router.get('/', (req: Request, res:Response)=>{
     })
 })
 
+router.get('/:id',(req:Request, res:Response)=>{
+    service.getById(parseInt(req.params.id)).then((film)=>{
+        res.send(film)
+    })
+} )
+
 export default router

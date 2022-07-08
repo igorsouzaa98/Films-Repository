@@ -1,5 +1,5 @@
-import * as repository from '../api/repositories/FilmRepository'
-import {FilmInput, FilmOutput} from "../api/models/FilmModel"
+import * as repository from '../database/repositories/FilmRepository'
+import {FilmInput, FilmOutput} from "../database/models/FilmModel"
 
 export const getAll =async ():Promise<FilmOutput[]> =>{
     return await repository.getAll()

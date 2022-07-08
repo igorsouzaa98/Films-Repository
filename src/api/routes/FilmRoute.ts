@@ -1,3 +1,4 @@
+// @ts-ignore
 import express, {Application, NextFunction, Request, Response} from 'express'
 import * as controller from '../controllers/FilmsController'
 
@@ -7,7 +8,7 @@ router.get('/', async (req:Request, res:Response)=>{
     res.send(await controller.getAll())
 })
 
-router.get('/:id', async (req:Request, res:Response)=>{
+router.get('/:id', async (req:Request, res:Response, next:NextFunction)=>{
     try{
         res.send(await controller.getById(parseInt(req.params.id)))
     }catch (error){

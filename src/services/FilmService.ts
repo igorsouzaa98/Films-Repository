@@ -17,6 +17,6 @@ export  const updateById = async (id: number, payload: FilmInput): Promise<FilmO
     return await repository.updateById(id, payload)
 }
 
-export const deleteById = async (id:number): Promise <void> =>{
-    return  await repository.deleteById(id)
+export const deleteById = async (id:number): Promise<void> =>{
+     repository.deleteById(id)
 }

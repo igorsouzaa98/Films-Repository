@@ -1,26 +1,22 @@
-import {Request, Response, Router} from "express"
+import {FilmInput, FilmOutput} from '../../database/models/FilmModel'
 import * as service from '../../services/FilmService'
 
-const router = Router()
+export const getAll = async (): Promise<FilmOutput[]> => {
+    return await service.getAll();
+}
 
-router.get('/', async (req: Request, res:Response)=>{
-        res.send(await service.getAll())
-})
+export const getById = async (id: number): Promise<FilmOutput> => {
+    return await service.getById(id)
+}
 
-router.get('/:id', async (req:Request, res:Response)=>{
-        res.send(await service.getById(parseInt(req.params.id)))
-} )
+export const create = async (payload: FilmInput): Promise<FilmOutput> => {
+    return service.create(payload)
+}
 
-router.post('/', async (req:Request, res:Response)=> {
-    res.status(201).send(await service.create(req.body))
-})
+export const updateById = async (id: number, payload: FilmInput): Promise<FilmOutput> => {
+    return await service.updateById(id, payload)
+}
 
-router.put('/:id',async (req:Request, res:Response)=>{
-    res.send(await service.updateById(parseInt(req.params.id), req.body))
-} )
-
-router.delete('/:id', async (req: Request, res:Response)=>{
-    res.status(204).send(await service.deleteById(parseInt(req.params.id)))
-})
-
-export default router
+export const deleteById = async (id: number): Promise<void> => {
+   return await service.deleteById(id)
+}
